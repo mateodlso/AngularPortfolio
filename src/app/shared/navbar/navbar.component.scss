@@ -1,0 +1,85 @@
+/* Paleta rápida */
+$clr-bg:     #181818;
+$clr-accent: #ff7b00;
+$clr-text:   #f8f8f8;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: $clr-bg;
+  color: $clr-text;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  .logo a {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: $clr-text;
+
+    span { color: $clr-accent; }
+  }
+
+  /* ===== Menú desktop ===== */
+  .menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    a {
+      color: $clr-text;
+      transition: color .3s;
+
+      &.active,
+      &:hover { color: $clr-accent; }
+    }
+  }
+
+  /* ===== Botón hamburguesa ===== */
+  .burger {
+    display: none;          // se muestra en mobile
+    flex-direction: column;
+    gap: .3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    span {
+      width: 24px; height: 2px;
+      background: $clr-text;
+      transition: transform .3s;
+    }
+  }
+}
+
+/* ===== Breakpoint mobile ===== */
+@media (max-width: 992px) {
+  .navbar {
+    .burger { display: flex; }
+
+    .menu {
+      /* oculto por defecto ‑ aparece con .open */
+      position: absolute;
+      top: 100%;
+      right: 0;
+      flex-direction: column;
+      background: $clr-bg;
+      width: 200px;
+      padding: 1rem 0;
+      border-radius: .5rem 0 .5rem .5rem;
+      transform: translateY(-20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+
+      &.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      li { padding: .5rem 1.5rem; }
+    }
+  }
+}
