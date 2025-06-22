@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+.page {
+  padding: 4rem 2rem;
+  min-height: calc(100vh - 80px);   // resta la navbar
+  animation: fade .4s ease;
+
+  h1 { margin-bottom: 2rem; }
+
+  .card, .project {
+    background: #222;
+    border-radius: .8rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
